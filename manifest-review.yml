@@ -3,6 +3,7 @@ applications:
 - name: pal-tracker
   path: build/libs/pal-tracker.jar
   routes:
-  - route: psw.pal-tracker.review.api.sys.pikes.pal.pivotal.io
+  - route: pal-tracker.review.psw.apps.pikes.pal.pivotal.io
+
 
 
