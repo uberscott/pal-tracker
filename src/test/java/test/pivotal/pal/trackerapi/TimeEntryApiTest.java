@@ -36,6 +36,7 @@ public class TimeEntryApiTest {
 
 
         assertThat(createResponse.getStatusCode()).isEqualTo(HttpStatus.CREATED);
+System.out.println( "createResponse.getBody(): "+createResponse.getBody() );
 
         DocumentContext createJson = parse(createResponse.getBody());
         assertThat(createJson.read("$.id", Long.class)).isGreaterThan(0);
@@ -52,6 +53,7 @@ public class TimeEntryApiTest {
 
         ResponseEntity<String> listResponse = restTemplate.getForEntity("/time-entries", String.class);
 
+        System.out.println( "listResponse: "+listResponse.getBody());
 
         assertThat(listResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
 
@@ -71,6 +73,7 @@ public class TimeEntryApiTest {
 
         ResponseEntity<String> readResponse = this.restTemplate.getForEntity("/time-entries/" + id, String.class);
 
+       System.out.println( "READ RESPONSE: "+readResponse.getBody()) ;
 
         assertThat(readResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
         DocumentContext readJson = parse(readResponse.getBody());
@@ -88,7 +91,7 @@ public class TimeEntryApiTest {
 
 
         ResponseEntity<String> updateResponse = restTemplate.exchange("/time-entries/" + id, HttpMethod.PUT, new HttpEntity<>(updatedTimeEntry, null), String.class);
-
+       System.out.println( "updateResponse: "+updateResponse.getBody());
 
         assertThat(updateResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
 
