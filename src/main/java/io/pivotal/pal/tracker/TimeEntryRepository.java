@@ -8,13 +8,13 @@ public interface TimeEntryRepository {
 
     public TimeEntry create(TimeEntry any);
 
-    public TimeEntry find(long l);
+    public TimeEntry find(Long id);
 
     public List<TimeEntry> list() ;
 
-    public  TimeEntry update(long eq, TimeEntry any);
+    public  TimeEntry update(Long id, TimeEntry any);
 
-    public TimeEntry delete(long l);
+    public void delete(Long id);
 
 
 }

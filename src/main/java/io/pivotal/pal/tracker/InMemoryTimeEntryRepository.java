@@ -10,6 +10,7 @@ public class InMemoryTimeEntryRepository implements TimeEntryRepository{
     private Map<Long,TimeEntry> map = new HashMap<>();
     private int idIndex = 0;
 
+    @Override
     public TimeEntry create(TimeEntry any) {
         idIndex++;
         any.setId( idIndex);
@@ -17,17 +18,20 @@ public class InMemoryTimeEntryRepository implements TimeEntryRepository{
         return any;
     }
 
-    public TimeEntry find(long l) {
+    @Override
+    public TimeEntry find(Long l) {
         return  map.get(l);
     }
 
+    @Override
     public List<TimeEntry> list() {
 
         List<TimeEntry> rtn = new ArrayList<>(map.values());
         return  rtn ;
     }
 
-    public  TimeEntry update(long id, TimeEntry any) {
+    @Override
+    public  TimeEntry update(Long id, TimeEntry any) {
         if( !map.containsKey(id))
             return null;
         any.setId(id);
@@ -35,8 +39,10 @@ public class InMemoryTimeEntryRepository implements TimeEntryRepository{
         return any;
     }
 
-    public TimeEntry delete(long l) {
-        return map.remove(l);
+    @Override
+    public void delete(Long l) {
+
+        map.remove(l);
     }
 
 }

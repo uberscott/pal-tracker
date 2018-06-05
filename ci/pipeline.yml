@@ -101,7 +101,6 @@ jobs:
        DATABASE_NAME: {{production-database-name}}
        DATABASE_USERNAME: {{production-database-username}}
        DATABASE_PASSWORD: {{production-database-password}}
-
   - put: production-deployment
     params:
       manifest: pal-tracker/manifest-production.yml
